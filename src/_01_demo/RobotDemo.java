@@ -22,7 +22,7 @@ public class RobotDemo {
 		rob.penDown();
 
 		// SPEED. Make the robot move quickly. Use this command:
-		rob.setSpeed(100);
+		rob.setSpeed(67);
 
 		for(int i = 0; i < 40; i++){
 			rob.move(200);
