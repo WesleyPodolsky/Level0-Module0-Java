@@ -16,17 +16,17 @@ public class DragonFight {
 		// 1. Create some variables to hold health levels
 		
 			// playerHealth to store your health - set it equal to 100
-	
+			int playerHealth = 100;
 			// dragonHealth to store the dragon's health - set it equal to 100
-
+			int dragonHealth = 100;
 		// 2. Create some variables to hold the attack strengths. These will be given different values later. 
 		
 			// playerAttack to store the damage the player's attack will do - set it equal
 			// to 0 for now.
-	
+			int playerAttack = 0;
 			// dragonAttack to store the damage the dragon's attack will do - set it equal
 			// to 0 for now.
-
+			int dragonAttack = 0;
 		
 		//  This while statement will cause the game attack code to repeat
 		while (true) {
@@ -35,9 +35,32 @@ public class DragonFight {
 
 				// 3. Ask the player in a pop-up if they want to attack the dragon with a yell
 				// or a kick
-	
+			String input = JOptionPane.showInputDialog("Attack the dragon with a yell or a kick?"); 
 				// 4. If they typed in "yell":
-	
+			if (input.equals("yell")) {
+				playerAttack = ran.nextInt(10);
+			}
+			if (input.equals("kick")) {
+				playerAttack = ran.nextInt(25);
+			}
+			dragonHealth -= playerAttack;
+			
+			
+			JOptionPane.showMessageDialog(null,"you attacked for " + playerAttack + " damage. the dragon is now at " + dragonHealth + " hp.");
+			
+			if(playerHealth <= 0) {
+				playerLost();
+			}
+			dragonAttack = ran.nextInt(35);
+			playerHealth -= dragonAttack;
+			
+			JOptionPane.showMessageDialog(null,"the dragon attacked for " + dragonAttack + " damage. you are now at " + playerHealth + " hp."); 
+			
+			
+			
+			if(dragonHealth <= 0) {
+				dragonLost();
+			}
 					  // -- Find a random number between 0 and 10 and store it in playerAttack. Use
 					  // ran.nextInt(10)
 			
@@ -77,14 +100,15 @@ public class DragonFight {
 
 	static void playerLost() {
 		// 11. Tell the player that they have been defeated by the dragon and have no treasure
-
+		JOptionPane.showMessageDialog(null,"You have been defeated. The dragon keeps his treasure");
 
 		System.exit(0);   //This code ends the program
 	}
 
 	static void dragonLost() {
 		// 12. Tell the user that the dragon has been defeated and they get a ton of gold!
-
+		JOptionPane.showMessageDialog(null,"You have defeated the dragon and won a ton of gold!");
+		
 		System.exit(0);   //This code ends the program
 	}
 
